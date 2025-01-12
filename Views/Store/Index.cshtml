@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Website.Models.Book>
+
+
+@{
+	ViewData["Title"] = "Store";
+}
+<!-- Search bar -->
+<form asp-action="Index" class="container-fluid row justify-content-center">
+	<div class="col-8  text-center d-flex align-items-center justify-content-center search-bar">
+		<input type="text" name="searchString" placeholder="Search by Title or Author" class="form-control col- rounded-start border-2 border-warning " />
+		<button type="submit" class="btn btn-light btn-sm ms-2 rounded-circle">
+			<i class="fa-solid fa-magnifying-glass"></i>
+		</button>
+		<a asp-action="Index" class="btn btn-light btn-sm ms-2 rounded-circle">
+			<i class="fa-solid fa-arrow-rotate-left"></i>
+		</a>
+	</div>
+</form>
+
+<h2 class="my-4">Store</h2>
+
+
+<div class="row">
+	@foreach(var book in Model)
+	{
+		<div class=" col-sm-3 col-xs-6  ">
+			<div class="card my-3 store-card">
+				<a class="card-style" asp-controller="Store" asp-action="Details" asp-route-id="@book.Id">
+					<img src="@book.ImgUrl" class="card-img-top card-img-custom" style="height:25rem;" />
+					<div class="card-body" style="height:6rem;">
+						<h5 class="mb-3 title">
+							@book.Title
+						</h5>
+						<h6 class="author">
+							By : @book.Author
+						</h6>
+					</div>
+					<div class="card-body">
+						
+						@{
+							var discountType = book.DiscountType;
+						}
+
+						@if (discountType == DiscountType.Percentage || discountType == DiscountType.Price)
+						{
+							<span style="color:darkgoldenrod;" class="card-text">
+								@book.FinalPrice.ToString("c")
+							</span>
+							<del style="color:red;">@book.Price</del>
+						}
+						else
+						{
+							<span style="color:darkgoldenrod;" class="card-text">
+								@book.Price.ToString("c")
+							</span>
+						}
+						<a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@book.Id"  class="btn btn-danger float-end">
+							<i class="fa-solid fa-cart-plus"></i>
+						</a>
+					</div>
+				</a>
+			</div>
+		</div>
+	}
+</div>

@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bookeefy</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Website.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-danger text-white shadow-sm mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white logo" asp-area="" asp-controller="Store" asp-action="Index">Book<span>eefy</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon text-black text-center justify-content-center">
+                        <i class="fa-solid fa-bars"></i>
+                    </span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 nav-list">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Store" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Store" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Store" asp-action="Contact">Contact Us</a>
+                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end border-2 border-warning" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Book" asp-action="Index"><i class="fa-solid fa-list"></i> Books List</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Book" asp-action="Create"><i class="fa-solid fa-book-medical"></i> Add Book</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="ListAllRoles"><i class="fa-solid fa-user-gear"></i> Roles</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="UsersList"><i class="fa-solid fa-users"></i> Users</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Order" asp-action="OrdersList"><i class="fa-solid fa-chart-simple"></i> Orders</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="BookTags" asp-action="Index"><i class="fa-solid fa-chart-simple"></i> BookTags</a></li>
+                                    
+                                </ul>
+                            </li>
+                    </ul>
+                    <partial class="nav-item" name="_LoginPartial" />
+                    <div class="dropdown">
+                        <a class="nav-link text-white dropdown-toggle" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-2 border-warning" aria-labelledby="cartDropdown">
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Cart" asp-action="Index">Cart</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Order" asp-action="MyOrdersHistory">Order History</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="">
+        <footer class="text-center text-white" style="background-color: #dc3545;">
+            <div class="container">
+                <section class="mt-1">
+                    <div class="row text-center d-flex justify-content-center pt-3">
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a asp-controller="Store" asp-action="About" class="text-white">About us</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a asp-controller="Store" asp-action="Contact" class="text-white">Contact</a>
+                            </h6>
+                        </div>
+                    </div>
+                </section>
+                <hr class="my-3" />
+                <section class="text-center mb-3">
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="text-white me-4">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </section>
+            </div>
+            <div class="text-center p-3"
+                 style="background-color: rgba(0, 0, 0, 0.2)">
+                © 2024 Copyright:
+                <a class="text-white" href="#">Bookeefy.com</a>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/88321070e2.js" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+            integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
